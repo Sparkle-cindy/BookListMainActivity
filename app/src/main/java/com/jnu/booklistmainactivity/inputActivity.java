@@ -30,7 +30,7 @@ public class inputActivity extends AppCompatActivity {
                 Intent intent=new Intent();
                 intent.putExtra("position",position);  //将位置传回去
                 intent.putExtra("name",editTextName.getText().toString());
-                setResult(MainActivity.RESULT_CODE_ADD_DATA,intent); //传参数和状态码给主程序
+                setResult(BookFragment.RESULT_CODE_ADD_DATA,intent); //传参数和状态码给主程序
                 inputActivity.this.finish();  //应用程序将自己给干掉，避免不能将前面的那个窗口显示出来
             }
         });
