@@ -50,7 +50,7 @@ public class WebViewFragment extends Fragment {
             }
         });
         WebSettings webSettings=webView.getSettings();
-        webView.loadUrl("http://www.baidu.com");
+        webView.loadUrl("http://news.sina.cn");
         webSettings.setJavaScriptEnabled(true);
         return rootView;
     }
