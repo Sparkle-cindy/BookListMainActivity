@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import androidx.fragment.app.Fragment;
 
@@ -43,13 +44,13 @@ public class WebViewFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_web_view, container, false);
         WebView webView=rootView.findViewById(R.id.webview_content);
-        webView.loadUrl("http://www.baidu.com");
-        webView.loadUrl("file://android_asset/baidu.html");
-        //加载手机本地的html页面
-        webView.loadUrl("content://com.android.htmlfileprovider/sdcard/baidu.html");
-        //加载 HTML 页面的一小段内容。参数1：需要截取展示的内容、参数2：展示内容的类型、参数3：字节码
-        webView.loadData("html", "text/html; charset=UTF-8", null);
+        webView.setWebViewClient(new WebViewClient(){
+            public boolean shouldOverrideUrlLoading(WebView view,String url){
+                return super.shouldOverrideUrlLoading(view,url);
+            }
+        });
         WebSettings webSettings=webView.getSettings();
+        webView.loadUrl("http://www.baidu.com");
         webSettings.setJavaScriptEnabled(true);
         return rootView;
     }
